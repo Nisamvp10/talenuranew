@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | Please see the user guide for complete details:
 |
-|	https://codeigniter.com/userguide3/general/routing.html
+|	https://codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -49,22 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'login/loginCheck';
-$route['login'] = 'login/index';
-$route['register'] = 'register';
-$route['checkEmailExists'] = 'register/dupemail';
-$route['checkcontactExists'] = 'register/dupcontactNumber';
-$route['reg-submit'] = 'register/submit';
-$route['login-submit'] = 'login/submit';
-$route['home'] = 'front/home';
-$route['signout'] = 'logout/index';
-$route['thought-submit'] = 'front/userpost/thought_submit';
-$route['loadMoreData'] =  'front/userpost/loadmoredata';
-$route['unlike-post'] = 'front/userpost/likePost';
-$route['addComment'] = 'front/userpost/addComment';
-// profile.
-$route['profile'] = 'front/profile';
-$route['upload_profile_image'] = 'front/profile/saveprofile';
+$route['default_controller'] = 'home';
+$route['admin'] = 'admin/login';
+$route['country/(:any)'] = 'country/index/$1';
+$route['immigration/(:any)'] = 'immigration/index/$1';
+$route['test_preparation/(:any)'] = 'test_preparation/index/$1';
+
 
 
 $route['404_override'] = '';

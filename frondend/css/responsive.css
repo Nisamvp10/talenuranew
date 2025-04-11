@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+    .iconBOx{
+        display: block;
+    }
+    .featured .row{
+        display: block;
+    }
+}
+

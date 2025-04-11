@@ -1,0 +1,273 @@
+<?php // $this->load->view('admin/include/header_link');?>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?=base_url('backend/')?>plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?=base_url('backend/')?>dist/css/adminlte.min.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="<?=base_url('backend/')?>plugins/summernote/summernote-bs4.min.css">
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="<?=base_url('backend/')?>plugins/codemirror/codemirror.css">
+  <link rel="stylesheet" href="<?=base_url('backend/')?>plugins/codemirror/theme/monokai.css">
+  <!-- SimpleMDE -->
+  <link rel="stylesheet" href="<?=base_url('backend/')?>plugins/simplemde/simplemde.min.css">
+  <link rel="stylesheet" href="<?=base_url('backend/')?>plugins/summernote/summernote-bs4.min.css">
+    <script type="text/javascript" src="https://melivenews.com/template/main/ck/ck/ckeditor/ckeditor.js"> </script>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="<?=base_url('backend//')?>dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div> -->
+
+<?php $this->load->view('admin/include/top_header');?>
+
+<!-- call top header  nav  -->
+<?php $this->load->view('admin/include/side_nav');?>
+
+<!--call  side  nav  -->
+<?php
+
+if(!empty($preparation)){
+  $id           = $preparation->id;
+  $title        = $preparation->title;
+  $language     = $preparation->language;
+  $short_description = $preparation->short_description;
+  $description  = $preparation->description;
+  $image        = $preparation->path;
+  $slug         = $preparation->slug;
+}else{
+  $id=$event=$title =$short_description =$date=$start_date=$end_date= $description = $image=$author =$event_status=$language=$slug='';
+}
+
+?>
+ 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+<?php $this->load->view('admin/include/panel_header') ;?>
+
+ <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Create Blog <small></small></h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form id="quickForm" novalidate="novalidate" action="<?=base_url('admin/test_preparation/submit')?>"  enctype="multipart/form-data" method="post">
+                  <?=messages();?>
+                <input type="hidden" name="id" value="<?=$id;?>">
+                 <input type="hidden" name="path" value="<?=$image;?>">
+                <div class="card-body">
+
+                   <div class="form-group">
+                    <label for="exampleInputEmail1">Title</label>
+                    <input type="text" id="slugtitle" name="title" class="form-control" value="<?=$title;?>" id="exampleInputEmail1" placeholder="Enter Title">
+                      <input type="hidden" id="slug" value="<?=$slug;?>" name="blogurl" class="form-control">
+                  </div>
+
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Language Test</label>
+                    <input type="text" name="language" class="form-control" value="<?=$language;?>" id="exampleInputEmail1" placeholder="Enter Title">
+                  </div>
+
+               
+
+
+                  
+                   <div class="form-group">
+                    <label for="exampleInputEmail1">Short description</label>
+                    <textarea name="short_description" cols="15" class="form-control" placeholder="short_description"><?=$short_description;?></textarea>
+                  </div>
+
+
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">Description</label>
+                     <textarea required="" id="editor" name="description"><?=$description;?></textarea>
+                      </textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputFile">Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" name="file" id="exampleInputFile">
+                        <label class="custom-file-label"  for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" id="subBtn" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
+
+          </div>
+          <!--/.col (right) -->
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
+
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+<?php $this->load->view('admin/include/footer');?>
+<?php // $this->load->view('admin/include/footer_link');?>
+
+
+<!-- jQuery -->
+<script src="<?=base_url('backend/')?>plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?=base_url('backend/')?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?=base_url('backend/')?>dist/js/adminlte.min.js"></script>
+<!-- Summernote -->
+<script src="<?=base_url('backend/')?>plugins/summernote/summernote-bs4.min.js"></script>
+<!-- CodeMirror -->
+<script src="<?=base_url('backend/')?>plugins/codemirror/codemirror.js"></script>
+<script src="<?=base_url('backend/')?>plugins/codemirror/mode/css/css.js"></script>
+<script src="<?=base_url('backend/')?>plugins/codemirror/mode/xml/xml.js"></script>
+<script src="<?=base_url('backend/')?>plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?=base_url('backend/')?>dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    // Summernote
+    $('#summernote').summernote()
+
+    // CodeMirror
+  
+  })
+</script>
+
+<script src="<?=base_url('backend//')?>plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script src="<?=base_url('backend//')?>plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="<?=base_url('backend//')?>plugins/summernote/summernote-bs4.min.js"></script>
+
+
+<script>
+
+  $(function () {
+  bsCustomFileInput.init();
+});
+
+  $(function () {
+  $.validator.setDefaults({
+    submitHandler: function () {
+     $('#subBtn').attr('disabled',true);
+      return true;
+    }
+  });
+  $('#quickForm').validate({
+    rules: {
+      title: {
+        required: true,
+      },
+        language: {
+        required: true,
+        minlength:2
+      },
+      description: {
+        required: true,
+        minlength: 5
+      },
+      
+    },
+    messages: {
+      email: {
+        required: "Please fill out this field",
+      },
+      password: {
+        required: "lease fill out this field",
+      },
+    },
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.form-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+  });
+});
+</script>
+
+<script>
+  
+
+
+  $(document).ready(function(){
+      
+                 
+      CKEDITOR.replace('editor' ,{
+        filebrowserUploadUrl: '<?=base_url('backend')?>/ck/ckeditor/ck_upload.php',
+        filebrowserUploadMethod:'form',
+       extraPlugins: 'embed,autoembed,image2',
+      height: 500,
+
+      // Load the default contents.css file plus customizations for this sample.
+      contentsCss: [
+        'https://cdn.ckeditor.com/4.15.1/full-all/contents.css',
+        'https://ckeditor.com/docs/ckeditor4/4.15.1/examples/assets/css/widgetstyles.css'
+      ],
+      // Setup content provider. See https://ckeditor.com/docs/ckeditor4/latest/features/media_embed
+      embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+
+      // Configure the Enhanced Image plugin to use classes instead of styles and to disable the
+      // resizer (because image size is controlled by widget styles or the image takes maximum
+      // 100% of the editor width).
+      image2_alignClasses: ['image-align-left', 'image-align-center', 'image-align-right'],
+      image2_disableResizer: true
+
+      });
+
+    });
+
+
+  $("#slugtitle").keyup(function() {
+  var Text = $(this).val();
+  Text = Text.toLowerCase();
+  Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
+  $("#slug").val(Text);        
+});
+
+
+
+
+  $(document).ready(function(){
+    setTimeout(function(){ 
+      $('form .alert').addClass('hide');
+    },2000)        
+  })
+
+</script>
